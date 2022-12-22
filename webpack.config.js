@@ -1,0 +1,98 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const mode = process.env.NODE_ENV || 'development'
+const isAnalyze = process.env.BUNDLE_ANALYZE || false
+const isProduction = mode === 'production'
+
+const entry = {
+  main: {
+    import: './src/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'pie-chart': {
+    import: './src/components/PieChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'react-18.2.0': ['react', 'react-dom']
+}
+
+const output = {
+  filename: '[name].bundle.min.js',
+  sourceMapFilename: '[name].bundle.min.js.map',
+  clean: true
+}
+const devServer = {
+  open: true,
+  port: 9000,
+  static: 'demo',
+  client: {
+    overlay: {
+      errors: true,
+      warnings: false
+    }
+  }
+}
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: 'demo/index.html',
+    filename: 'index.html',
+    chunks: ['main', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/pie-chart.html',
+    filename: 'pie-chart.html',
+    chunks: ['pie-chart', 'react-18.2.0']
+  })
+]
+const _module = {
+  rules: [
+    {
+      test: /\.tsx?$/,
+      loader: 'ts-loader',
+      exclude: ['/node_modules/']
+    },
+    {
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader']
+    },
+    {
+      test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+      type: 'asset'
+    }
+  ]
+}
+const optimization = {
+  runtimeChunk: false // 'multiple', // 'single'
+}
+const resolve = {
+  extensions: ['.tsx', '.ts', '.jsx', '.js']
+}
+const externals = {}
+
+let devtool = false
+if (isProduction) {
+  devtool = 'source-map'
+}
+if (isAnalyze) {
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      generateStatsFile: true
+    })
+  )
+}
+
+console.log(`========================= ${mode.toUpperCase()} BUILD =========================`)
+
+module.exports = {
+  mode,
+  entry,
+  output,
+  devtool,
+  optimization,
+  devServer,
+  plugins,
+  module: _module,
+  resolve,
+  externals
+}

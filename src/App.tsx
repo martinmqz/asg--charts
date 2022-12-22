@@ -1,0 +1,15 @@
+import React from 'react'
+
+function App () {
+  return (
+    <div className="App">
+      <h1>ASG charts - DEMO</h1>
+      <ul>
+        <li><a href="pie-chart.html">pie-chart.html</a></li>
+      </ul>
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+    </div>
+  )
+}
+
+export default App
