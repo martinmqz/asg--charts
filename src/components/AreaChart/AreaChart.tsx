@@ -2,16 +2,21 @@ import React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-export interface Props {
-  options: Highcharts.Options
-}
-export default function PieChart (props:HighchartsReact.Props) {
+export default function AreaChart (props: HighchartsReact.Props) {
   const chartRef = React.useRef<HighchartsReact.RefObject>(null)
-
+  const options: Highcharts.Options = {
+    title: {
+      text: props.title as string
+    },
+    series: [{
+      type: 'area',
+      data: props.data as number[]
+    }]
+  }
   return (
     <HighchartsReact
       highcharts={Highcharts}
-      options={props.options}
+      options={options}
       ref={chartRef}
       {...props}
     />

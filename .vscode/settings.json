@@ -1,0 +1,9 @@
+{
+    "editor.renderWhitespace": "boundary",
+    "files.trimTrailingWhitespace": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.codeActionsOnSave.rules": null,
+    "eslint.format.enable": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": true
+}

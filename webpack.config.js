@@ -14,6 +14,18 @@ const entry = {
     import: './src/components/PieChart/index.tsx',
     dependOn: ['react-18.2.0']
   },
+  'area-chart': {
+    import: './src/components/AreaChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'line-chart': {
+    import: './src/components/LineChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'column-chart': {
+    import: './src/components/ColumnChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
   'react-18.2.0': ['react', 'react-dom']
 }
 
@@ -24,7 +36,7 @@ const output = {
 }
 const devServer = {
   open: true,
-  port: 9000,
+  port: 8000,
   static: 'demo',
   client: {
     overlay: {
@@ -43,6 +55,21 @@ const plugins = [
     template: 'demo/pie-chart.html',
     filename: 'pie-chart.html',
     chunks: ['pie-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/area-chart.html',
+    filename: 'area-chart.html',
+    chunks: ['area-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/line-chart.html',
+    filename: 'line-chart.html',
+    chunks: ['line-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/column-chart.html',
+    filename: 'column-chart.html',
+    chunks: ['column-chart', 'react-18.2.0']
   })
 ]
 const _module = {
