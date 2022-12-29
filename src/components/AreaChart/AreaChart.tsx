@@ -1,17 +1,35 @@
 import React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import COLUMN_CHART_DATA from './data'
 
-export default function AreaChart (props: HighchartsReact.Props) {
+export default function AreaChart (props:HighchartsReact.Props) {
   const chartRef = React.useRef<HighchartsReact.RefObject>(null)
   const options: Highcharts.Options = {
+    chart: {
+      // type: 'column',
+      // name: 'Year',
+      alignTicks: false
+    },
     title: {
       text: props.title as string
     },
+    legend: {
+      // enabled: false
+    },
     series: [{
-      type: 'area',
-      data: props.data as number[]
-    }]
+      type: 'column',
+      name: '',
+      data: COLUMN_CHART_DATA
+    }],
+    xAxis: {
+      type: 'category'
+    },
+    yAxis: {
+      title: {
+        text: 'Precent'
+      }
+    }
   }
   return (
     <HighchartsReact

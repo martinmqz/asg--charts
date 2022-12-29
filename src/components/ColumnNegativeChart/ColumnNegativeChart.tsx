@@ -1,43 +1,50 @@
 import React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import COLUMN_CHART_DATA from './data'
-export default React.memo(ColumnChart)
+export default React.memo(ColumnNegativeChart)
 
 interface ChartProps {
   data:object[]
   title?:string
   subtitle?:string
-  seriesName?:string
+  series1Name?:string
   yAxisTitle?:string
+  xAxisCategories:string[]
 }
 
-function ColumnChart (props:ChartProps) {
+function ColumnNegativeChart (props:ChartProps) {
   const chartRef = React.useRef<HighchartsReact.RefObject>(null)
   const options: Highcharts.Options = {
     chart: {
       // type: 'column',
       // name: 'Year',
-      alignTicks: false
+      // alignTicks: false
+      backgroundColor: 'transparent'
     },
     title: {
       text: props.title
     },
-    legend: {
-      // enabled: false
+    xAxis: {
+      categories: props.xAxisCategories
     },
     series: [{
       type: 'column',
-      name: '',
-      data: COLUMN_CHART_DATA
+      name: props.series1Name,
+      data: props.data,
+      dataLabels: {
+        enabled: true
+      }
     }],
-    xAxis: {
-      type: 'category'
-    },
     yAxis: {
       title: {
-        text: 'Precent'
+        text: props.yAxisTitle
+      },
+      labels: {
+        format: '{value:,.1f}%'
       }
+    },
+    credits: {
+      enabled: false
     }
   }
   return (
@@ -45,6 +52,7 @@ function ColumnChart (props:ChartProps) {
       highcharts={Highcharts}
       options={options}
       ref={chartRef}
+      {...props}
     />
   )
 }

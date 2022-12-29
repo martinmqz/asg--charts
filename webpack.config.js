@@ -26,6 +26,22 @@ const entry = {
     import: './src/components/ColumnChart/index.tsx',
     dependOn: ['react-18.2.0']
   },
+  'line-and-column-chart': {
+    import: './src/components/LineAndColumnChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'line-time-series-chart': {
+    import: './src/components/LineTimeSeriesChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'column-negative-chart': {
+    import: './src/components/ColumnNegativeChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
+  'column-negative-double-chart': {
+    import: './src/components/ColumnNegativeDoubleChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
   'react-18.2.0': ['react', 'react-dom']
 }
 
@@ -70,6 +86,26 @@ const plugins = [
     template: 'demo/column-chart.html',
     filename: 'column-chart.html',
     chunks: ['column-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/line-and-column-chart.html',
+    filename: 'line-and-column-chart.html',
+    chunks: ['line-and-column-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/line-time-series-chart.html',
+    filename: 'line-time-series-chart.html',
+    chunks: ['line-time-series-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/column-negative-chart.html',
+    filename: 'column-negative-chart.html',
+    chunks: ['column-negative-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/column-negative-double-chart.html',
+    filename: 'column-negative-double-chart.html',
+    chunks: ['column-negative-double-chart', 'react-18.2.0']
   })
 ]
 const _module = {
