@@ -46,6 +46,10 @@ const entry = {
     import: './src/components/SplineSymbolsChart/index.tsx',
     dependOn: ['react-18.2.0']
   },
+  'area-annotations-chart': {
+    import: './src/components/AreaAnnotationsChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
   'react-18.2.0': ['react', 'react-dom']
 }
 
@@ -115,6 +119,11 @@ const plugins = [
     template: 'demo/spline-symbols-chart.html',
     filename: 'spline-symbols-chart.html',
     chunks: ['spline-symbols-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/area-annotations-chart.html',
+    filename: 'area-annotations-chart.html',
+    chunks: ['area-annotations-chart', 'react-18.2.0']
   })
 ]
 const _module = {

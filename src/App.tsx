@@ -7,6 +7,7 @@ function App () {
       <ul>
         <li><a href="pie-chart.html">pie-chart.html</a></li>
         <li><a href="area-chart.html">area-chart.html</a></li>
+        <li><a href="area-annotations-chart.html">area-annotations-chart.html</a></li>
         <li><a href="line-chart.html">line-chart.html</a></li>
         <li><a href="column-chart.html">column-chart.html</a></li>
         <li><a href="line-and-column-chart.html">line-and-column-chart.html</a></li>
