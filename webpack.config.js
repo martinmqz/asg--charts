@@ -42,6 +42,10 @@ const entry = {
     import: './src/components/ColumnNegativeDoubleChart/index.tsx',
     dependOn: ['react-18.2.0']
   },
+  'spline-symbols-chart': {
+    import: './src/components/SplineSymbolsChart/index.tsx',
+    dependOn: ['react-18.2.0']
+  },
   'react-18.2.0': ['react', 'react-dom']
 }
 
@@ -106,6 +110,11 @@ const plugins = [
     template: 'demo/column-negative-double-chart.html',
     filename: 'column-negative-double-chart.html',
     chunks: ['column-negative-double-chart', 'react-18.2.0']
+  }),
+  new HtmlWebpackPlugin({
+    template: 'demo/spline-symbols-chart.html',
+    filename: 'spline-symbols-chart.html',
+    chunks: ['spline-symbols-chart', 'react-18.2.0']
   })
 ]
 const _module = {
