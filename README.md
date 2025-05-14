@@ -1,5 +1,5 @@
 # asg-charts
- Highcharts implementation for Allspring
+ Highcharts implementation
 
 - npm i -D
   - typescript ts-loader
