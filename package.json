@@ -1,7 +1,7 @@
 {
   "name": "asg-charts",
   "version": "1.0.0",
-  "description": "Highcharts integration into Allspring site",
+  "description": "Highcharts integration",
   "main": "index.js",
   "scripts": {
     "build": "eslint src/**/* --fix && webpack --progress",
